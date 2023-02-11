@@ -12,10 +12,10 @@ your key/value pairs in the following format of `KEY=VALUE`:
     JWT_SECRET = ''
     SALT_KEY = ""
     ```
-2. npm install
+2. yarn install
 
 # How to use
 ```bash
- npm start
+ yarn start
 ```
 
