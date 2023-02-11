@@ -4,6 +4,8 @@ const { query } = require("../../../database/connection");
 const BaseResponse = require("../../../utils/baseResponse");
 const UserModel = require("../../user/models/userModel");
 const jwt = require('jsonwebtoken');
+const QueryHelpers = require("../../../utils/queryHelpers");
+
 
 const RegisterUserService = async (data) => {
     try {
@@ -108,9 +110,34 @@ const generateRefreshToken = (data) => {
     }
 }
 
+
+const ForgotPasswordService = async (data) => {
+    try {
+        const user = await QueryHelpers.isUserExistByEmail(data.email);
+        //check if user not exist
+        if (Helpers.isNull(user)) {
+            return BaseResponse.generateResponse(400, "User tidak ada", "");
+        }
+        //hash password;
+        data.password = Helpers.hashPassword(data.password);
+        const isSamePassword = await query(`Select * FROM users WHERE email = '${data.email}' and password = '${data.password}'`);
+        //check if password is same;
+        if (isSamePassword.length !== 0) {
+            return BaseResponse.generateResponse(400, "Password tidak boleh sama", "");
+        }
+        //success update password;
+        await query(`UPDATE users SET password = '${data.password}' WHERE email = '${data.email}'`);
+        return BaseResponse.generateResponse(200, "Success forgot password", "");
+    } catch (error) {
+        Helpers.print("AuthService forgotPassword", error.message, true);
+        return BaseResponse.generateResponse(503, "Terjadi Kesalahan", "");
+    }
+}
+
 module.exports = {
     RegisterUserService,
     LoginUserService,
     generateAccessToken,
     RefreshAccessTokenService,
+    ForgotPasswordService,
 }

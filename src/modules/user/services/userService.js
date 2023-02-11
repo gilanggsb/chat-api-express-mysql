@@ -8,7 +8,7 @@ const QueryHelpers = require("../../../utils/queryHelpers");
 // Returns detail profile
 const GetDetailUserService = async (userId) => {
   try {
-    const user = await QueryHelpers.isUserExist(userId);
+    const user = await QueryHelpers.isUserExistByUserID(userId);
     //check if user is not exist
     if (Helpers.isNull(user)) {
       return BaseResponse.generateResponse(400, "User tidak ditemukan", "");
@@ -27,7 +27,7 @@ const UpdateProfileService = async (data) => {
     data.gender = data.gender.toUpperCase();
     //parse phone
     data.phone = Helpers.parsePhone(data.phone);
-    const user = await QueryHelpers.isUserExist(data.userId);
+    const user = await QueryHelpers.isUserExistByUserID(data.userId);
     //check if user not exist
     if (Helpers.isNull(user)) {
       return BaseResponse.generateResponse(400, "User tidak ditemukan, gagal update profile", "");
@@ -45,7 +45,7 @@ const UpdateProfileService = async (data) => {
 // delete account
 const DeleteAccountService = async (userId) => {
   try {
-    const user = await QueryHelpers.isUserExist(userId);
+    const user = await QueryHelpers.isUserExistByUserID(userId);
     //check if user is exist;
     if (Helpers.isNull(user)) {
       return BaseResponse.generateResponse(400, "User tidak ditemukan, gagal hapus akun", "");
@@ -61,7 +61,7 @@ const DeleteAccountService = async (userId) => {
 
 const UpdatePasswordService = async (data) => {
   try {
-    const user = await QueryHelpers.isUserExist(data.userId);
+    const user = await QueryHelpers.isUserExistByUserID(data.userId);
     //check if user not exist;
     if (Helpers.isNull(user)) {
       return BaseResponse.generateResponse(400, "User tidak ditemukan, gagal update password", "");
