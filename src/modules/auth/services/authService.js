@@ -1,8 +1,8 @@
 
-const { Helpers } = require("../utils/helpers");
-const { query } = require("../database/connection");
-const BaseResponse = require("../models/baseResponse");
-const UserModel = require("../models/userModel");
+const { Helpers } = require("../../../utils/helpers");
+const { query } = require("../../../database/connection");
+const BaseResponse = require("../../../utils/baseResponse");
+const UserModel = require("../../user/models/userModel");
 const jwt = require('jsonwebtoken');
 
 const RegisterUserService = async (data) => {

@@ -1,8 +1,8 @@
-const { query } = require("../database/connection");
-const { Helpers } = require("../utils/helpers");
-const BaseResponse = require("../models/baseResponse");
+const { query } = require("../../../database/connection");
+const { Helpers } = require("../../../utils/helpers");
+const BaseResponse = require("../../../utils/baseResponse");
 const UserModel = require("../models/userModel");
-const QueryHelpers = require("../utils/queryHelpers");
+const QueryHelpers = require("../../../utils/queryHelpers");
 
 
 // Returns detail profile

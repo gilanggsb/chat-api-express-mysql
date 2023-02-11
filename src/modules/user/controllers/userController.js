@@ -1,5 +1,5 @@
-const BaseResponse = require("../models/baseResponse");
-const { Helpers } = require("../utils/helpers");
+const BaseResponse = require("../../../utils/baseResponse");
+const { Helpers } = require("../../../utils/helpers");
 
 
 const {

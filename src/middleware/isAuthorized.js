@@ -1,5 +1,5 @@
 const { Helpers } = require("../utils/helpers");
-const BaseResponse = require("../models/BaseResponse");
+const BaseResponse = require("../utils/baseResponse");
 
 const isAuthorized = (req, res, next) => {
     //extract token from header;

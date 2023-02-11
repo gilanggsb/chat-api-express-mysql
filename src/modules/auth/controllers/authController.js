@@ -1,5 +1,5 @@
-const BaseResponse = require("../models/baseResponse");
-const { Helpers } = require("../utils/helpers");
+const BaseResponse = require("../../../utils/baseResponse");
+const { Helpers } = require("../../../utils/helpers");
 const { RegisterUserService, LoginUserService, RefreshAccessTokenService } = require(`../services/authService`)
 
 const RegisterUser = async (req, res) => {
