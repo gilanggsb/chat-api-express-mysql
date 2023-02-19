@@ -21,6 +21,11 @@ const RegisterUserService = async (data) => {
             Helpers.print("AuthService registerUser : ", errorMessage);
             return BaseResponse.generateResponse(400, errorMessage, "");
         }
+        const userName = await query(`SELECT * FROM users WHERE username = '${data.username}'`,);
+        //check if username is already registered
+        if (userName.length != 0) {
+            return BaseResponse.generateResponse(400, "Username telah digunakan", "");
+        }
         const user = await query(`SELECT * FROM users WHERE email = '${data.email}' OR phone ='${data.phone}'`,);
         //check if user is already registered
         if (user.length != 0) {

@@ -23,6 +23,17 @@ class QueryHelpers {
             throw error;
         }
     }
+    static isUserExistByUsername = async (username) => {
+        try {
+            const user = await query(`SELECT * FROM users WHERE username = '${username}'`);
+            if (user.length == 0) {
+                return null;
+            }
+            return user[0];
+        } catch (error) {
+            throw error;
+        }
+    }
 }
 
 module.exports = QueryHelpers;
