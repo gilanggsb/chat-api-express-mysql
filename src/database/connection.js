@@ -5,7 +5,10 @@ let connection = null;
 
 const createConnection = (config) => {
     if (!connection) {
-        connection = mysql.createConnection(config);
+        connection = mysql.createConnection({
+            ...config,
+            ssl: true
+        });
     }
     return connection;
 };

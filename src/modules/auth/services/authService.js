@@ -64,7 +64,7 @@ const LoginUserService = async (data) => {
         return BaseResponse.generateResponse(200, "Login berhasil", userModel);
 
     } catch (error) {
-        Helpers.print("AuthService registerUser", error.message, true);
+        Helpers.print("AuthService loginUser", error.message, true);
         return BaseResponse.generateResponse(503, "Terjadi Kesalahan", "");
     }
 }

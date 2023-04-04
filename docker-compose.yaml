@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+
+  app:
+    image: node:18-slim
+    working_dir: /var/www
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      - ./:/var/www
+    environment:
+      - TZ=Asia/Jakarta
+      - NODE_OPTIONS=--max-old-space-size=8192
+    command: bash -c "node app.js"
