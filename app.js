@@ -13,9 +13,9 @@ const port = process.env.PORT || 8080;
 app.use(morgan("common"));
 app.use(bodyParser.json());
 
-app.use('/', function (req, res, next) {
-    res.send("Hello world!");
-});
+// app.use('/', function (req, res, next) {
+//     res.send("Hello world!");
+// });
 
 //implement routes
 routes.forEach(element => {
